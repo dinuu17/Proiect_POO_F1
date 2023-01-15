@@ -5,10 +5,11 @@ using namespace std;
 class Bilet {
 	int* locuri;
 	int nrLocuri;
-	int nrRanduri; // STERGE !!!
-	char* zona;  // char simplu
+	int nrRanduri;
+	char* zona;  
 	string data;
 	string ora;
+	int pretBilet;
 	char* denumire;
 	const int numarBilete;
 	static int nrB;
@@ -32,6 +33,9 @@ public:
 
 	char* Bilet::getZona();
 	void Bilet::setZona(const char* zonaNoua);
+
+	int Bilet::getPretBilet();
+	void Bilet::setPretBilet(int pretBiletNou);
 
 	int* Bilet::getLocuri();
 	void setLocuri(int* locuriNoua, int nrLocuriNoua);

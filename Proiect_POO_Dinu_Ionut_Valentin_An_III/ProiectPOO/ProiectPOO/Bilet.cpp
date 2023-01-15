@@ -13,6 +13,7 @@ Bilet::Bilet()  : numarBilete(nrB++)
 	locuri = nullptr;
 	data="";
 	ora="";
+	pretBilet = 0;
 	nrLocuri = 0;
 	nrRanduri = 0;
 }
@@ -32,6 +33,7 @@ Bilet::Bilet(const char* denumire) : numarBilete(nrB++)
 	locuri = nullptr;
 	data = "";
 	ora = "";
+	pretBilet = 0;
 	nrLocuri = 0;
 	nrRanduri = 0;
 
@@ -141,6 +143,7 @@ Bilet& Bilet::operator=(const Bilet& b)
 
 		this->data = b.data;
 		this->ora = b.ora;
+		this->pretBilet = b.pretBilet;
 		this->nrRanduri = b.nrRanduri;
 	}
 	return *this;
@@ -191,6 +194,9 @@ istream& operator>>(istream& in, Bilet& b)
 	cout << "Numar locuri: ";
 	in >> b.nrLocuri;
 
+	cout << "Pret bilet: ";
+	in >> b.pretBilet;
+
 	if (b.locuri != nullptr)
 	{
 		delete[] b.locuri;
@@ -221,6 +227,8 @@ ostream& operator<<(ostream& out, const Bilet& b)
 		out << "Zona : " << b.zona << endl;
 	}
 	out << "Numar locuri: " << b.nrLocuri << endl;
+
+	out << "Pret bilet: " << b.pretBilet << endl;
 
 	out << "Locuri : ";
 	for (int i = 0; i < b.nrLocuri; i++)
@@ -285,6 +293,11 @@ int Bilet::getNrLocuri()
 	return nrLocuri;
 }
 
+int Bilet::getPretBilet()
+{
+	return pretBilet;
+}
+
 int Bilet::getnumarBilete()
 {
 	return numarBilete;
@@ -340,11 +353,27 @@ void Bilet::setNrLocuri(int nrLocuriNoua)
 	nrLocuri = nrLocuriNoua;
 }
 
+void Bilet::setPretBilet(int pretBiletNoua)
+{
+	pretBilet = pretBiletNoua;
+}
 
 
 void Bilet::zonaLoc(Bilet b)
 {
 	cout << "Biletul se afla in zona: " << b.zona;
+}
+
+void Bilet::biletVIP(Bilet b)
+{
+	if (b.pretBilet > 100)
+	{
+		cout << "Biletul este unul tip VIP";
+	}
+	else
+	{
+		cout << "Biletul nu este unul de tip VIP";
+	}
 }
 
 void Bilet::homeAlone(Bilet b)
